@@ -206,6 +206,8 @@ function sendInitialEmail_(account, rowValues) {
       "<p>Before that date, please make sure you have saved anything you need from your IACS account and transferred ownership of any shared school materials that should remain available.</p>",
       `<p>Please review these account exit instructions: <a href="${CONFIG.leavingAccountGuideUrl}">Leaving your IACS account</a>.</p>`,
       "<p>If you believe this date is incorrect, please contact the IACS technology team.</p>",
+      "<p>Thank you!</p>",
+      "<p>The IACS Tech Team</p>"
     ].join(""),
   });
 }
@@ -238,7 +240,7 @@ function notifyAccountReenabled_(sheet, headerMap, row, account) {
 
   statusCell.setNote(
     `Account was active again as of ${formatDateTime_(new Date())}. ` +
-      "If this reactivation is expected, update the suspension dates or status fields."
+    "If this reactivation is expected, update the suspension dates or status fields."
   );
   setProgressValue_(sheet, headerMap, row, "Current Status", "Re-enabled after suspension");
   setProgressValue_(sheet, headerMap, row, "Last Alert Sent", new Date());
