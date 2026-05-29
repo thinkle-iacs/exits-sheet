@@ -4,6 +4,8 @@ const CONFIG = {
   reminderLeadDays: 7,
   dailyTriggerHour: 6,
   adminNoticeEmails: ["thinkle@innovationcharter.org"],
+  leavingAccountGuideUrl:
+    "https://docs.google.com/document/d/1URfLLiZJ91qkv6P27pG7SYSp9hpNCrzJsHAZ_kP0ox0/edit?tab=t.0",
 };
 
 const SOURCE_FIELDS = {
@@ -202,6 +204,7 @@ function sendInitialEmail_(account, rowValues) {
       `<p>Hello ${escapeHtml_(rowValues["Staff Name"] || "")},</p>`,
       `<p>Your IACS account is scheduled to be suspended on <strong>${suspensionDate}</strong>.</p>`,
       "<p>Before that date, please make sure you have saved anything you need from your IACS account and transferred ownership of any shared school materials that should remain available.</p>",
+      `<p>Please review these account exit instructions: <a href="${CONFIG.leavingAccountGuideUrl}">Leaving your IACS account</a>.</p>`,
       "<p>If you believe this date is incorrect, please contact the IACS technology team.</p>",
     ].join(""),
   });
@@ -216,7 +219,7 @@ function sendReminderEmail_(account, rowValues) {
     htmlBody: [
       `<p>Hello ${escapeHtml_(rowValues["Staff Name"] || "")},</p>`,
       `<p>This is a reminder that your IACS account is scheduled to be suspended on <strong>${suspensionDate}</strong>.</p>`,
-      "<p>Please complete any needed file transfers or account cleanup before that date.</p>",
+      `<p>Please complete any needed file transfers or account cleanup before that date. The account exit instructions are here: <a href="${CONFIG.leavingAccountGuideUrl}">Leaving your IACS account</a>.</p>`,
     ].join(""),
   });
 }
